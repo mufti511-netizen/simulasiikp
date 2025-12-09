@@ -1,0 +1,201 @@
+/* ===========================================================
+   BASE STYLE — Light & Dark Mode
+   =========================================================== */
+:root {
+  --c-bg: #f8fafc;
+  --c-card: #ffffff;
+  --c-text: #111827;
+  --c-muted: #6b7280;
+  --c-border: #e5e7eb;
+  --c-primary: #3b82f6;   /* biru */
+  --c-success: #10b981;   /* hijau */
+  --c-gray-dark: #1f2937; /* abu tua */
+  --radius: 10px;
+  --shadow: 0 6px 20px rgba(0, 0, 0, .06);
+  --transition: 0.25s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-bg: #111827;
+    --c-card: #1f2937;
+    --c-text: #f3f4f6;
+    --c-muted: #9ca3af;
+    --c-border: #374151;
+    --shadow: 0 6px 25px rgba(0,0,0,.3);
+  }
+}
+
+body {
+  padding: 22px;
+  background: var(--c-bg);
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto;
+  color: var(--c-text);
+  transition: background var(--transition), color var(--transition);
+}
+
+/* ===========================================================
+   CARD STYLE – clean ala Tailwind / AdminLTE
+   =========================================================== */
+.card {
+  background: var(--c-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--c-border);
+  transition: var(--transition);
+  padding: 22px;
+}
+
+.card:hover {
+  box-shadow: 0 10px 28px rgba(0,0,0,0.1);
+}
+
+/* ===========================================================
+   TEXT UTILITIES
+   =========================================================== */
+.small-muted {
+  font-size: .85rem;
+  color: var(--c-muted);
+}
+
+/* ===========================================================
+   FORM STYLE — modern, smooth
+   =========================================================== */
+.form-control {
+  border-radius: 8px;
+  padding: 8px 11px;
+  border: 1px solid var(--c-border);
+  background: var(--c-card);
+  color: var(--c-text);
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+}
+
+/* ===========================================================
+   LIST / TREE VIEW
+   =========================================================== */
+.group-header {
+  cursor: pointer;
+  background: var(--c-card);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--c-border);
+  transition: var(--transition);
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.group-header:hover {
+  background: rgba(59,130,246,0.08);
+}
+
+.sub-items {
+  margin-left: 18px;
+  border-left: 2px dashed var(--c-border);
+  padding-left: 14px;
+  overflow: hidden;
+  transition: max-height .35s ease, opacity .25s ease, padding .25s ease;
+}
+
+/* collapsed */
+.sub-items.collapsed {
+  max-height: 0 !important;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* expanded */
+.sub-items.expanded {
+  max-height: 800px;
+  opacity: 1;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* Icon animasi expand/collapse */
+.group-header .chevron {
+  transition: transform .25s ease;
+}
+
+.group-header.open .chevron {
+  transform: rotate(90deg);
+}
+
+/* ===========================================================
+   PROGRESS CELL
+   =========================================================== */
+.progress-cell {
+  min-width: 220px;
+}
+
+/* ===========================================================
+   MOBILE RESPONSIVE TWEAKS
+   =========================================================== */
+@media (max-width: 768px) {
+  body {
+    padding: 12px;
+  }
+  .card {
+    padding: 15px !important;
+  }
+  .progress-cell {
+    min-width: 100%;
+  }
+  .group-header {
+    font-size: 0.92rem;
+  }
+}
+
+/* ===========================================================
+   SIDEBAR UTILITY (future use)
+   =========================================================== */
+.sidebar {
+  background: var(--c-card);
+  border-right: 1px solid var(--c-border);
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 240px;
+  transform: translateX(-260px);
+  transition: var(--transition);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-toggle {
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(59,130,246,0.08);
+}
+
+/* ===========================================================
+   THEME VARIATIONS — biru, hijau, abu tua
+   =========================================================== */
+
+.theme-blue {
+  --c-primary: #3b82f6;
+}
+
+.theme-green {
+  --c-primary: #10b981;
+}
+
+.theme-darkgray {
+  --c-primary: #374151;
+}
